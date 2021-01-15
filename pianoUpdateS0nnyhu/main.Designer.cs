@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbLoadFromFile = new System.Windows.Forms.CheckBox();
             this.lblStatusCheck = new System.Windows.Forms.Label();
             this.pbLoadingCheck = new System.Windows.Forms.PictureBox();
             this.btnCheck = new System.Windows.Forms.Button();
@@ -36,10 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnGetData = new System.Windows.Forms.Button();
             this.gridViewListMusic = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbLoadFromENv = new System.Windows.Forms.CheckBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingCheck)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -48,7 +49,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbLoadFromENv);
+            this.groupBox1.Controls.Add(this.cbLoadFromFile);
             this.groupBox1.Controls.Add(this.lblStatusCheck);
             this.groupBox1.Controls.Add(this.pbLoadingCheck);
             this.groupBox1.Controls.Add(this.btnCheck);
@@ -56,15 +57,28 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(697, 180);
+            this.groupBox1.Size = new System.Drawing.Size(406, 163);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Authorization token";
             // 
+            // cbLoadFromFile
+            // 
+            this.cbLoadFromFile.AutoSize = true;
+            this.cbLoadFromFile.Checked = true;
+            this.cbLoadFromFile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbLoadFromFile.Location = new System.Drawing.Point(15, 25);
+            this.cbLoadFromFile.Name = "cbLoadFromFile";
+            this.cbLoadFromFile.Size = new System.Drawing.Size(106, 17);
+            this.cbLoadFromFile.TabIndex = 5;
+            this.cbLoadFromFile.Text = "Load from .token";
+            this.cbLoadFromFile.UseVisualStyleBackColor = true;
+            this.cbLoadFromFile.CheckedChanged += new System.EventHandler(this.cbLoadFromFile_CheckedChanged);
+            // 
             // lblStatusCheck
             // 
             this.lblStatusCheck.AutoSize = true;
-            this.lblStatusCheck.Location = new System.Drawing.Point(12, 144);
+            this.lblStatusCheck.Location = new System.Drawing.Point(12, 135);
             this.lblStatusCheck.Name = "lblStatusCheck";
             this.lblStatusCheck.Size = new System.Drawing.Size(264, 13);
             this.lblStatusCheck.TabIndex = 6;
@@ -90,7 +104,7 @@
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 23);
             this.btnCheck.TabIndex = 4;
-            this.btnCheck.Text = "Check";
+            this.btnCheck.Text = "Initialize";
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
@@ -117,7 +131,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(740, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(440, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,63 +140,61 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // btnGetData
-            // 
-            this.btnGetData.Enabled = false;
-            this.btnGetData.Location = new System.Drawing.Point(24, 233);
-            this.btnGetData.Name = "btnGetData";
-            this.btnGetData.Size = new System.Drawing.Size(75, 23);
-            this.btnGetData.TabIndex = 2;
-            this.btnGetData.Text = "GET  data..json";
-            this.btnGetData.UseVisualStyleBackColor = true;
-            this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // gridViewListMusic
             // 
             this.gridViewListMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewListMusic.Enabled = false;
-            this.gridViewListMusic.Location = new System.Drawing.Point(24, 289);
+            this.gridViewListMusic.Location = new System.Drawing.Point(24, 278);
             this.gridViewListMusic.Name = "gridViewListMusic";
-            this.gridViewListMusic.Size = new System.Drawing.Size(685, 214);
+            this.gridViewListMusic.Size = new System.Drawing.Size(394, 214);
             this.gridViewListMusic.TabIndex = 3;
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(129, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.Enabled = false;
+            this.btnAdd.Location = new System.Drawing.Point(24, 231);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // cbLoadFromENv
+            // btnRefresh
             // 
-            this.cbLoadFromENv.AutoSize = true;
-            this.cbLoadFromENv.Checked = true;
-            this.cbLoadFromENv.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbLoadFromENv.Location = new System.Drawing.Point(15, 25);
-            this.cbLoadFromENv.Name = "cbLoadFromENv";
-            this.cbLoadFromENv.Size = new System.Drawing.Size(97, 17);
-            this.cbLoadFromENv.TabIndex = 5;
-            this.cbLoadFromENv.Text = "Load from .env";
-            this.cbLoadFromENv.UseVisualStyleBackColor = true;
-            this.cbLoadFromENv.CheckedChanged += new System.EventHandler(this.cbLoadFromENv_CheckedChanged);
+            this.btnRefresh.Enabled = false;
+            this.btnRefresh.Location = new System.Drawing.Point(117, 231);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(24, 215);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(394, 2);
+            this.label2.TabIndex = 6;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 515);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(440, 515);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.gridViewListMusic);
-            this.Controls.Add(this.btnGetData);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "main";
-            this.Text = "Form1";
+            this.Text = "s0nnyhuPianoDataUpdater";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingCheck)).EndInit();
@@ -203,11 +215,12 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.PictureBox pbLoadingCheck;
-        private System.Windows.Forms.Button btnGetData;
         private System.Windows.Forms.Label lblStatusCheck;
         private System.Windows.Forms.DataGridView gridViewListMusic;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox cbLoadFromENv;
+        private System.Windows.Forms.CheckBox cbLoadFromFile;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Label label2;
     }
 }
 
