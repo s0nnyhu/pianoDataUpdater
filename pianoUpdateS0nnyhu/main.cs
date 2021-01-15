@@ -56,7 +56,7 @@ namespace pianoUpdateS0nnyhu
         {
             foreach(Music a in listMusic)
             {
-                Console.WriteLine(a.Title);
+                Console.WriteLine(a.Title + " " + a.Origin);
             }
         }
     }
