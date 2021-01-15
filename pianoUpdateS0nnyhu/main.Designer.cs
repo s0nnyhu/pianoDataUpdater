@@ -39,6 +39,7 @@
             this.btnGetData = new System.Windows.Forms.Button();
             this.gridViewListMusic = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbLoadFromENv = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingCheck)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbLoadFromENv);
             this.groupBox1.Controls.Add(this.lblStatusCheck);
             this.groupBox1.Controls.Add(this.pbLoadingCheck);
             this.groupBox1.Controls.Add(this.btnCheck);
@@ -54,7 +56,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 120);
+            this.groupBox1.Size = new System.Drawing.Size(697, 180);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Authorization token";
@@ -62,7 +64,7 @@
             // lblStatusCheck
             // 
             this.lblStatusCheck.AutoSize = true;
-            this.lblStatusCheck.Location = new System.Drawing.Point(9, 101);
+            this.lblStatusCheck.Location = new System.Drawing.Point(12, 144);
             this.lblStatusCheck.Name = "lblStatusCheck";
             this.lblStatusCheck.Size = new System.Drawing.Size(264, 13);
             this.lblStatusCheck.TabIndex = 6;
@@ -73,7 +75,7 @@
             this.pbLoadingCheck.ErrorImage = null;
             this.pbLoadingCheck.ImageLocation = "C:\\Users\\Sonny\\source\\repos\\pianoUpdateS0nnyhu\\loading.gif";
             this.pbLoadingCheck.InitialImage = null;
-            this.pbLoadingCheck.Location = new System.Drawing.Point(90, 70);
+            this.pbLoadingCheck.Location = new System.Drawing.Point(96, 100);
             this.pbLoadingCheck.Name = "pbLoadingCheck";
             this.pbLoadingCheck.Size = new System.Drawing.Size(19, 23);
             this.pbLoadingCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -84,7 +86,7 @@
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(9, 70);
+            this.btnCheck.Location = new System.Drawing.Point(15, 100);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 23);
             this.btnCheck.TabIndex = 4;
@@ -94,7 +96,8 @@
             // 
             // tbToken
             // 
-            this.tbToken.Location = new System.Drawing.Point(9, 44);
+            this.tbToken.Enabled = false;
+            this.tbToken.Location = new System.Drawing.Point(15, 74);
             this.tbToken.Name = "tbToken";
             this.tbToken.Size = new System.Drawing.Size(370, 20);
             this.tbToken.TabIndex = 2;
@@ -102,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 28);
+            this.label1.Location = new System.Drawing.Point(12, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
@@ -127,7 +130,7 @@
             // btnGetData
             // 
             this.btnGetData.Enabled = false;
-            this.btnGetData.Location = new System.Drawing.Point(21, 178);
+            this.btnGetData.Location = new System.Drawing.Point(24, 233);
             this.btnGetData.Name = "btnGetData";
             this.btnGetData.Size = new System.Drawing.Size(75, 23);
             this.btnGetData.TabIndex = 2;
@@ -139,14 +142,14 @@
             // 
             this.gridViewListMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewListMusic.Enabled = false;
-            this.gridViewListMusic.Location = new System.Drawing.Point(24, 218);
+            this.gridViewListMusic.Location = new System.Drawing.Point(24, 289);
             this.gridViewListMusic.Name = "gridViewListMusic";
             this.gridViewListMusic.Size = new System.Drawing.Size(685, 214);
             this.gridViewListMusic.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(129, 177);
+            this.button1.Location = new System.Drawing.Point(129, 233);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -154,11 +157,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cbLoadFromENv
+            // 
+            this.cbLoadFromENv.AutoSize = true;
+            this.cbLoadFromENv.Checked = true;
+            this.cbLoadFromENv.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbLoadFromENv.Location = new System.Drawing.Point(15, 25);
+            this.cbLoadFromENv.Name = "cbLoadFromENv";
+            this.cbLoadFromENv.Size = new System.Drawing.Size(97, 17);
+            this.cbLoadFromENv.TabIndex = 5;
+            this.cbLoadFromENv.Text = "Load from .env";
+            this.cbLoadFromENv.UseVisualStyleBackColor = true;
+            this.cbLoadFromENv.CheckedChanged += new System.EventHandler(this.cbLoadFromENv_CheckedChanged);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 467);
+            this.ClientSize = new System.Drawing.Size(740, 515);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gridViewListMusic);
             this.Controls.Add(this.btnGetData);
@@ -191,6 +207,7 @@
         private System.Windows.Forms.Label lblStatusCheck;
         private System.Windows.Forms.DataGridView gridViewListMusic;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cbLoadFromENv;
     }
 }
 

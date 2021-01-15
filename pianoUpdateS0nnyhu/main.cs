@@ -59,5 +59,10 @@ namespace pianoUpdateS0nnyhu
                 Console.WriteLine(a.Title + " " + a.Origin);
             }
         }
+
+        private void cbLoadFromENv_CheckedChanged(object sender, EventArgs e)
+        {
+            tbToken.Enabled = !tbToken.Enabled;
+        }
     }
 }
