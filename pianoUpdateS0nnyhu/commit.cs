@@ -33,13 +33,14 @@ namespace pianoUpdateS0nnyhu
         {
             if (tbSha.Text == null || tbCommitMessage == null || main.listMusicBase64 == null || tbSha.Text == "" || tbCommitMessage.Text == "")
             {
-                MessageBox.Show("Error, make sure to fill all required fields", "Error, check fields");
-            } else
+                MessageBox.Show("Error, make sure to fill all required fields", "Error, check fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 String newSha = ApiHelper.commit(tbCommitMessage.Text, main.listMusicBase64, tbBranch.Text, tbSha.Text);
                 if (newSha != tbSha.Text)
                 {
-                    MessageBox.Show("Commit successfull " + newSha, "Result");
+                    MessageBox.Show("Committed, new sha : " + newSha, "Update data.json", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     main.sha = newSha;
                     this.Close();
                 }

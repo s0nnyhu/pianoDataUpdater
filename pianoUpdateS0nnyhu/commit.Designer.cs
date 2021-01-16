@@ -119,6 +119,7 @@
             this.Controls.Add(this.tbCommitMessage);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "commit";
             this.Text = "Commit";
             this.Load += new System.EventHandler(this.Form1_Load);

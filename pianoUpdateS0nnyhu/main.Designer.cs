@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbLoadFromFile = new System.Windows.Forms.CheckBox();
             this.lblStatusCheck = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnGenerateJson = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingCheck)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -166,7 +168,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(117, 231);
+            this.btnRefresh.Location = new System.Drawing.Point(121, 231);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 5;
@@ -185,7 +187,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(213, 231);
+            this.btnUpdate.Location = new System.Drawing.Point(222, 231);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 7;
@@ -193,11 +195,23 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnGenerateJson
+            // 
+            this.btnGenerateJson.Enabled = false;
+            this.btnGenerateJson.Location = new System.Drawing.Point(320, 231);
+            this.btnGenerateJson.Name = "btnGenerateJson";
+            this.btnGenerateJson.Size = new System.Drawing.Size(98, 23);
+            this.btnGenerateJson.TabIndex = 8;
+            this.btnGenerateJson.Text = "Generate Json";
+            this.btnGenerateJson.UseVisualStyleBackColor = true;
+            this.btnGenerateJson.Click += new System.EventHandler(this.btnGenerateJson_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 515);
+            this.Controls.Add(this.btnGenerateJson);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRefresh);
@@ -205,6 +219,8 @@
             this.Controls.Add(this.gridViewListMusic);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "main";
             this.Text = "s0nnyhuPianoDataUpdater";
@@ -235,6 +251,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnGenerateJson;
     }
 }
 

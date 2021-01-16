@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add.Designer.cs">
+      <DependentUpon>add.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApiHelper.cs" />
     <Compile Include="commit.cs">
       <SubType>Form</SubType>
@@ -59,6 +65,7 @@
     <Compile Include="commit.Designer.cs">
       <DependentUpon>commit.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseMusic.cs" />
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +75,9 @@
     <Compile Include="Music.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="add.resx">
+      <DependentUpon>add.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="commit.resx">
       <DependentUpon>commit.cs</DependentUpon>
     </EmbeddedResource>
