@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,10 @@ namespace pianoUpdateS0nnyhu
     {
         ApiHelper apiHelper;
         List<Music> listMusic;
+        BindingSource source = new BindingSource();
+
+        public static String listMusicBase64 = null;
+        public static String sha = null;
 
         public main()
         {
@@ -32,7 +37,7 @@ namespace pianoUpdateS0nnyhu
                 {
                     string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"token.txt");
                     string[] files = File.ReadAllLines(path);
-                    apiHelper = new ApiHelper(files[0]);
+                    ApiHelper.initApiHelper(files[0]);
                 }
                 catch (Exception ex)
                 {
@@ -40,11 +45,11 @@ namespace pianoUpdateS0nnyhu
                 }
             } else
             {
-                apiHelper = new ApiHelper(tbToken.Text.ToString());
+                ApiHelper.initApiHelper(tbToken.Text.ToString());
             }
 
 
-            String msg = apiHelper.getInfoRepository();
+            String msg = ApiHelper.getInfoRepository();
 
             pbLoadingCheck.Visible = false;
 
@@ -53,22 +58,30 @@ namespace pianoUpdateS0nnyhu
             if (msg.Contains("You are connected"))
             {
                 loadData();
+                setSha();
                 unlock();
             }
+        }
+
+        private void setSha()
+        {
+            sha = ApiHelper.getSha();
         }
 
         private void unlock()
         {
             btnAdd.Enabled = true;
             btnRefresh.Enabled = true;
+            btnUpdate.Enabled = true;
             gridViewListMusic.Enabled = true;
         }
 
 
         private void loadData()
         {
-            listMusic = apiHelper.getFile();
-            gridViewListMusic.DataSource = listMusic;
+            listMusic = ApiHelper.getFile();
+            source.DataSource = listMusic;
+            gridViewListMusic.DataSource = source;
             gridViewListMusic.Columns["Title"].Frozen = true;
         }
 
@@ -81,7 +94,8 @@ namespace pianoUpdateS0nnyhu
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Message", "Titre");
+            listMusic.Add(new Music("Blooming in the mud", "Walpis Kater", "00:29", null, "https://www.google.com", "Theishter", null, null));
+            source.ResetBindings(false);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -92,6 +106,19 @@ namespace pianoUpdateS0nnyhu
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Update music data in https://s0nnyhu.github.io/piano", "s0nnyhu : Piano data updater");
+        }
+
+        public String toBase64(String text)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(text);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var jsonListMusic = JsonConvert.SerializeObject(listMusic, Formatting.Indented);
+            listMusicBase64 = toBase64(jsonListMusic);
+            new commit().Show();
         }
     }
 }

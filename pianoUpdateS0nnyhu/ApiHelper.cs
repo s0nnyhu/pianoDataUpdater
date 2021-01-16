@@ -16,29 +16,24 @@ namespace pianoUpdateS0nnyhu
 
     class ApiHelper
     {
-        private HttpClient client;
-        private String token;
+        static HttpClient client;
+        static String token;
         private const string URL = "https://api.github.com";
 
-        private const string DATA = @"{""object"":[{""name"":""Name""}]}";
 
-        public ApiHelper(String token)
+        public static void initApiHelper(String token)
         {
+            ApiHelper.token = token;
             client = new HttpClient();
-            this.token = token;
-        }
-
-        public String getInfoRepository()
-        {
-            
             client.BaseAddress = new Uri(URL);
-
             // Add an Accept header for JSON format.
             client.DefaultRequestHeaders.UserAgent.Add(new System.Net.Http.Headers.ProductInfoHeaderValue("AppName", "1.0"));
-            client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", token);
+        }
 
+        public static String getInfoRepository()
+        {
             // List data response.
             HttpResponseMessage response = client.GetAsync("/repos/s0nnyhu/piano").Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
             if (response.IsSuccessStatusCode)
@@ -54,7 +49,7 @@ namespace pianoUpdateS0nnyhu
             }
         }
 
-        public List<Music> getFile()
+        public static List<Music> getFile()
         {
             HttpClient dlClient = new HttpClient();
 
@@ -90,6 +85,41 @@ namespace pianoUpdateS0nnyhu
             {
                 return null;
             }
+        }
+
+        public static String getSha()
+        {
+            // List data response.
+            HttpResponseMessage response = client.GetAsync("/repos/s0nnyhu/piano/contents/data.json?ref=develop").Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            if (response.IsSuccessStatusCode)
+            {
+                // Parse the response body.
+                var data = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+                dynamic dataObject = JObject.Parse(data);
+                return dataObject.sha;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static String commit(String commitMessage, String content, String branch, String sha)
+        {
+            var values = new Dictionary<object, object>
+            {
+                { "message", commitMessage }, { "content", content },
+                { "branch", branch }, { "sha", sha }
+            };
+
+            var formContent = new StringContent(JsonConvert.SerializeObject(values), Encoding.UTF8, "application/json");
+
+            var response = client.PutAsync("/repos/s0nnyhu/piano/contents/data.json", formContent).Result;
+
+            var res = response.Content.ReadAsStringAsync().Result;
+            dynamic dataObject = JObject.Parse(res);
+
+            return dataObject.sha;
         }
     }
 }

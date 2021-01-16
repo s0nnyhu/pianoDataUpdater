@@ -8,34 +8,35 @@ namespace pianoUpdateS0nnyhu
 {
     class Music
     {
-        private String title;
-        private String origin;
-        private String duration;
-        private String completed;
-        private String link;
-        private String credit;
-        private String mid;
-        private String mp3;
+        private string _title;
+        private string _origin;
+        private string _duration;
+        private string _completed;
+        private string _link;
+        private string _credit;
+        private string _mid;
+        private string _mp3;
 
         public Music(string title, string origin, string duration, string completed, string link, string credit, string mid, string mp3)
         {
-            this.title = title;
-            this.origin = origin;
-            this.duration = duration;
-            this.completed = completed;
-            this.link = link;
-            this.credit = credit;
-            this.mid = mid;
-            this.mp3 = mp3;
+            this._title = title;
+            this._origin = origin;
+            this._duration = duration;
+            this._completed = completed;
+            this._link = link;
+            this._credit = credit;
+            this._mid = mid;
+            this._mp3 = mp3;
         }
 
-        public string Title { get => title; set => title = value; }
-        public string Origin { get => origin; set => origin = value; }
-        public string Duration { get => duration; set => duration = value; }
-        public string Completed { get => completed; set => completed = value; }
-        public string Link { get => link; set => link = value; }
-        public string Credit { get => credit; set => credit = value; }
-        public string Mid { get => mid; set => mid = value; }
-        public string Mp3 { get => mp3; set => mp3 = value; }
+        public string title { get { return _title; } set { _title = value; } }
+        public string origin { get { return _origin; } set { _origin = value; } }
+        public string duration { get { return _duration; } set { _duration = value; } }
+        public string completed { get { return _completed; } set { _completed = value; } }
+        public string link { get { return _link; } set { _link = value; } }
+        public string credit { get { return _credit; } set { _credit = value; } }
+        public string mid { get { return _mid; } set { _mid = value; } }
+        public string mp3 { get { return _mp3; } set { _mp3 = value; } }
+
     }
 }

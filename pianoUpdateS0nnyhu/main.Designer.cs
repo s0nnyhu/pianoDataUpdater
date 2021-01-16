@@ -41,6 +41,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingCheck)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -181,11 +182,23 @@
             this.label2.Size = new System.Drawing.Size(394, 2);
             this.label2.TabIndex = 6;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Location = new System.Drawing.Point(213, 231);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 7;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 515);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAdd);
@@ -221,6 +234,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 
